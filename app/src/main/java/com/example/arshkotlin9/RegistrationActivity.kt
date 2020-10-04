@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
 import com.example.arshkotlin9.Repository.register
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -36,15 +37,20 @@ class RegistrationActivity : AppCompatActivity() {
                         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                     )
-                    val response = register(et_login.text.toString(), password)
-                    progressBar.visibility = View.GONE
-                    window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                    if (response.isSuccessful) {
-                        toast(R.string.succes_reg)
-                        setUserAuth(response.body()!!.token)
-                        finish()
-                    } else {
-                        longToast(R.string.error_reg)
+                    try {
+                        val response = register(et_login.text.toString(), password)
+
+                        progressBar.visibility = View.GONE
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                        if (response.isSuccessful) {
+                            toast(R.string.succes_reg)
+                            setUserAuth(response.body()!!.token)
+                            finish()
+                        } else {
+                            longToast(R.string.error_reg)
+                        }
+                    } catch (e: Exception) {
+                        toast(getString(R.string.msg_connection_err))
                     }
                 }
             }
@@ -53,7 +59,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun setUserAuth(token: String) =
         getSharedPreferences(API_SHARED_FILE, Context.MODE_PRIVATE)
-            .edit()
-            .putString(AUTHENTICATED_SHARED_KEY, token)
-            .commit()
+            .edit() {
+                putString(AUTHENTICATED_SHARED_KEY, token)
+            }
 }

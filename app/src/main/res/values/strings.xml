@@ -10,6 +10,7 @@
     <string name="error_reg">Ошибка</string>
     <string name="msg_auth_succ">Авторизация прошла успешно</string>
     <string name="msg_auth_err">Ошибка авторизации</string>
+    <string name="msg_connection_err">Нет интернет-подключения</string>
     <string name="msg_difpsw_err">Пароли отличаются</string>
     <string name="msg_paswd_invalid_err">Пароль должен состоять из не менее чем 6 лат. символов и цифр</string>
     <string name="tv_temp_txt">Тут будут посты</string>
