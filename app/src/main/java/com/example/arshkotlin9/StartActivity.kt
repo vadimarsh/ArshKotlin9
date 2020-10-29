@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.coroutines.launch
 import splitties.activities.start
-import splitties.toast.longToast
 import splitties.toast.toast
 
 class StartActivity : AppCompatActivity() {
@@ -37,18 +36,19 @@ class StartActivity : AppCompatActivity() {
                         )
                         try {
                             val response =
-                                Repository.authenticate(
+                                App.repository.authenticate(
                                     et_login.text.toString(),
                                     et_password.text.toString()
                                 )
-                            if (response.isSuccessful) {
 
-                                setUserAuth(response.body()!!.token)
+                            if (response.isSuccessful && response.code() != 400) {
                                 toast(getString(R.string.msg_auth_succ))
+                                setUserAuth(response.body()!!.token)
+
                                 start<PostsActivity>()
                                 finish()
                             } else {
-                                longToast(getString(R.string.msg_auth_err))
+                                toast(getString(R.string.msg_auth_err))
                             }
                         } catch (e: Exception) {
                             toast(getString(R.string.msg_connection_err))
@@ -74,10 +74,19 @@ class StartActivity : AppCompatActivity() {
 
     private fun setUserAuth(token: String) =
         getSharedPreferences(API_SHARED_FILE, Context.MODE_PRIVATE)
-            .edit { putString(AUTHENTICATED_SHARED_KEY, token) }
+            .edit {
+                putString(AUTHENTICATED_SHARED_KEY, token)
+            }
 
     private fun isAuthenticated() =
         getSharedPreferences(API_SHARED_FILE, Context.MODE_PRIVATE).getString(
             AUTHENTICATED_SHARED_KEY, ""
         )?.isNotEmpty() ?: false
+
+    private fun cleanUserAuth() =
+        getSharedPreferences(API_SHARED_FILE, Context.MODE_PRIVATE).edit() {
+            clear()
+            //putString(AUTHENTICATED_SHARED_KEY, "")
+
+        }
 }

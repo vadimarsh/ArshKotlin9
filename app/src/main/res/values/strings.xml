@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Авторизация и регистрация</string>
+    <string name="app_name">Задание 10</string>
     <string name="but_login">Авторизация</string>
     <string name="but_reg">Регистрация</string>
     <string name="but_confirm">Подтвердить</string>
@@ -14,4 +14,14 @@
     <string name="msg_difpsw_err">Пароли отличаются</string>
     <string name="msg_paswd_invalid_err">Пароль должен состоять из не менее чем 6 лат. символов и цифр</string>
     <string name="tv_temp_txt">Тут будут посты</string>
+    <string name="like_in_progress">Лайк в обработке</string>
+    <string name="repost_in_progress">Репост в обработке</string>
+    <string name="post_created_success">Пост добавлен</string>
+    <string name="error_occured">Произошла ошибка</string>
+    <string name="create_new_post">Создать новый пост</string>
+    <string name="enter_post_content">Введите контент поста здесь</string>
+    <string name="please_wait">Пожалуйста, подождите</string>
+    <string name="msg_already_reposted">Вы уже поделись этим постом</string>
+    <string name="load_more">Загрузить еще</string>
+    <string name="loading_posts">Загружаем</string>
 </resources>

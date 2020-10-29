@@ -7,7 +7,6 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
-import com.example.arshkotlin9.Repository.register
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.coroutines.launch
 import splitties.toast.longToast
@@ -38,7 +37,7 @@ class RegistrationActivity : AppCompatActivity() {
                         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                     )
                     try {
-                        val response = register(et_login.text.toString(), password)
+                        val response = App.repository.register(et_login.text.toString(), password)
 
                         progressBar.visibility = View.GONE
                         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
