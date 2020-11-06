@@ -1,5 +1,6 @@
 package com.example.arshkotlin9
 
+import android.content.Context
 import java.util.regex.Pattern
 
 fun isValid(password: String) =
@@ -35,3 +36,13 @@ fun verboseTime(time: Int): String {
     }
     return result
 }
+
+fun isFirstTime(context: Context) =
+    context.getSharedPreferences(API_SHARED_FILE, Context.MODE_PRIVATE).getBoolean(
+        FIRST_TIME_SHARED_KEY, true
+    )
+
+fun setNotFirstTime(context: Context) =
+    context.getSharedPreferences(API_SHARED_FILE, Context.MODE_PRIVATE)
+        .edit()
+        .putBoolean(API_SHARED_FILE, false)

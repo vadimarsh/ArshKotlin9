@@ -1,10 +1,15 @@
 package com.example.arshkotlin9.dto
 
+import com.example.arshkotlin9.SERVER_URL
+
 enum class AttachmentType {
-    IMAGE, AUDIO, VIDEO
+    IMAGE
 }
 
-data class AttachmentModel(val id: String, val url: String, val type: AttachmentType)
+data class AttachmentModel(val id: String, val mediaType: AttachmentType) {
+    val url
+        get() = "$SERVER_URL/api/v1/static/$id"
+}
 
 
 data class PostModel(

@@ -25,7 +25,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:hint="@string/enter_post_content"
-        app:layout_constraintBottom_toTopOf="@id/createPostBtn"
+        app:layout_constraintBottom_toTopOf="@id/attachPhotoImg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/createNewPostLabel">
@@ -39,6 +39,20 @@
             android:padding="8dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/attachPhotoImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="8dp"
+        android:src="@drawable/ic_add_photo"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/createPostBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentTil" />
+
 
     <Button
         android:id="@+id/createPostBtn"

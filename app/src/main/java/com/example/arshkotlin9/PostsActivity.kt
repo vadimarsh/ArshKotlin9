@@ -117,4 +117,12 @@ class PostsActivity : AppCompatActivity(), PostAdapter.OnLikeBtnClickListener,
             }
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (isFirstTime(this)) {
+            NotificationHelper.comeBackNotification(this)
+            setNotFirstTime(this)
+        }
+    }
 }

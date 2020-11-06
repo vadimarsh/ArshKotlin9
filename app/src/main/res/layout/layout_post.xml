@@ -74,6 +74,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/avatarIv" />
 
+        <FrameLayout
+            android:id="@+id/mediaContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@id/likeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contentTv">
+
+            <ImageView
+                android:id="@+id/photoImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:layout_constraintHeight_max="400dp" />
+        </FrameLayout>
+
 
         <ImageButton
             android:id="@+id/likeButton"
@@ -84,7 +102,7 @@
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@id/likeTv"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/contentTv"
+            app:layout_constraintTop_toBottomOf="@id/mediaContainer"
             app:srcCompat="@drawable/like_active" />
 
         <TextView
@@ -94,7 +112,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toStartOf="@id/commentButton"
             app:layout_constraintStart_toEndOf="@id/likeButton"
-            app:layout_constraintTop_toBottomOf="@id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@id/mediaContainer" />
 
         <ImageButton
             android:id="@+id/commentButton"
@@ -106,7 +124,7 @@
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@id/commentTv"
             app:layout_constraintStart_toEndOf="@id/likeTv"
-            app:layout_constraintTop_toBottomOf="@id/contentTv"
+            app:layout_constraintTop_toBottomOf="@id/mediaContainer"
             app:srcCompat="@drawable/comment" />
 
         <TextView
@@ -116,7 +134,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toStartOf="@id/shareButton"
             app:layout_constraintStart_toEndOf="@id/commentButton"
-            app:layout_constraintTop_toBottomOf="@id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@id/mediaContainer" />
 
         <ImageButton
             android:id="@+id/shareButton"
@@ -128,7 +146,7 @@
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@id/shareTv"
             app:layout_constraintStart_toEndOf="@id/commentTv"
-            app:layout_constraintTop_toBottomOf="@id/contentTv"
+            app:layout_constraintTop_toBottomOf="@id/mediaContainer"
             app:srcCompat="@drawable/share" />
 
         <TextView
@@ -138,7 +156,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/shareButton"
-            app:layout_constraintTop_toBottomOf="@id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@id/mediaContainer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

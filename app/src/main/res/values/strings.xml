@@ -24,4 +24,6 @@
     <string name="msg_already_reposted">Вы уже поделись этим постом</string>
     <string name="load_more">Загрузить еще</string>
     <string name="loading_posts">Загружаем</string>
+    <string name="notfc_quest">Понравилось ли вам у нас?</string>
+    <string name="notfc_invite">Дорогой друг, возвращайтесь к нам скорее</string>
 </resources>

@@ -16,12 +16,12 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        authTokenInterceptor = InjectAuthTokenInterceptor(
+        authTokenInterceptor = InjectAuthTokenInterceptor {
             getSharedPreferences(
                 API_SHARED_FILE,
                 Context.MODE_PRIVATE
             ).getString(AUTHENTICATED_SHARED_KEY, null)
-        )
+        }
         val client = OkHttpClient.Builder()
             .addInterceptor(authTokenInterceptor)
             .build()
@@ -35,6 +35,7 @@ class App : Application() {
 
         repository = Repository(api)
 
+        NotificationHelper.createNotificationChannel(this)
 
     }
 }

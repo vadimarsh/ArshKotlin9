@@ -3,10 +3,14 @@ package com.example.arshkotlin9.adapter
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.arshkotlin9.R
+import com.example.arshkotlin9.dto.AttachmentType
 import com.example.arshkotlin9.dto.PostModel
 import com.example.arshkotlin9.verboseTime
 import kotlinx.android.synthetic.main.activity_new_post.*
@@ -80,6 +84,17 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
             likeTv.text = post.likes.toString()
             createdTv.text = verboseTime(post.created)
             commentTv.text = post.reposts.toString()
+            Log.d("tag", post.toString())
+
+            if (post.attachment != null) {
+                when (post.attachment.mediaType) {
+                    AttachmentType.IMAGE -> {
+                        loadImage(photoImg, post.attachment.url)
+                    }
+                }
+            } else {
+                photoImg.visibility = View.GONE
+            }
 
             when {
                 post.likeActionPerforming -> {
@@ -130,5 +145,11 @@ class PostViewHolder(val adapter: PostAdapter, view: View) : RecyclerView.ViewHo
                 }
             }
         }
+    }
+
+    private fun loadImage(photoImg: ImageView, url: String) {
+        Glide.with(photoImg.context)
+            .load(url)
+            .into(photoImg)
     }
 }

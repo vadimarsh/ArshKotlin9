@@ -1,11 +1,10 @@
 package com.example.arshkotlin9.api
 
+import com.example.arshkotlin9.dto.AttachmentModel
 import com.example.arshkotlin9.dto.PostModel
+import okhttp3.MultipartBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 data class AuthRequestParams(val username: String, val password: String)
 
@@ -54,5 +53,10 @@ interface API {
         @Path("id") id: Long,
         @Body createPostRequest: PostRequest
     ): Response<PostModel>
+
+    @Multipart
+    @POST("api/v1/media")
+    suspend fun uploadImage(@Part file: MultipartBody.Part):
+            Response<AttachmentModel>
 
 }
